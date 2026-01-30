@@ -1,0 +1,4 @@
+index=main "Failed password"
+| rex field=_raw "Failed password for (?<user>\w+)"
+| stats count by user
+| where count > 3
